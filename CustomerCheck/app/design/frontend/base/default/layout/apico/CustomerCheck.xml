@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+	<!-- DEFAULT -->
+	<default>
+
+	</default>
+    <!-- END DEFAULT -->
+
+
+
+	<!-- CUSTOMER LOGGED OUT -->
+
+        <customer_logged_out>
+
+
+			<reference name="head">
+
+				<!-- Add 'Logged Out CSS' -->
+				<action method="addItem"><type>skin_css</type><name>css/apico_loggedout.css</name><params/></action>
+
+			</reference>
+
+
+
+            <reference name="top.links">
+	            <!-- Remove cart, checkout and wishlist top links -->
+	            <remove name="checkout_cart_link" />
+
+	            <!-- Remove my account top links -->
+	            <action method="removeLinkByUrl">
+	            	<url helper="customer/getAccountUrl"/>
+	            </action>
+
+		        <action method="addLink" translate="label title">
+		            <label>Apply for Trade Account</label>
+		            <url>apply</url>
+		            <title>Apply for Trade Account</title>
+		            <prepare/>
+                    <urlParams helper="core/url/getHomeUrl" />
+		        </action>
+
+            </reference>
+
+            <reference name="footer">
+
+	            <!-- Remove Logged-In Footer Columns -->
+	            <remove name="block_footer_column1" />
+	            <remove name="block_footer_column2" />
+	            <remove name="block_footer_column3" />
+	            <remove name="block_footer_column4" />
+	            <remove name="block_footer_column5" />
+	            <remove name="block_footer_column6" />
+	            <remove name="block_footer_payment" />
+
+            </reference>
+
+
+			<!-- The below isn't working -->
+			<!-- Trying to remove 'Add to Cart', Prices and Stock Status -->
+			<PRODUCT_TYPE_simple>
+				<remove name="product.info" />
+		        <remove name="product.info.simple.extra" />
+			</PRODUCT_TYPE_simple>
+
+        </customer_logged_out>
+
+    <!-- END CUSTOMER LOGGED OUT -->
+
+</layout>
